@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACME Corp - Cadastro de Clientes EBAC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">ACME Corp - EBAC</h1>
+        <img src="https://images.seeklogo.com/logo-png/43/1/ebac-logo-png_seeklogo-431047.png" alt="Logo da EBAC" class="d-block mx-auto my-3 rounded" style="max-width: 150px;">
+        <h2 class="text-center">Cadastro de Clientes</h2>
+
+        <form id="customerForm" novalidate>
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control rounded" id="fullName" name="fullName" required>
+                <div class="invalid-feedback">
+                    Por favor, insira o nome completo.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control rounded" id="email" name="email" required>
+                <div class="invalid-feedback">
+                    Por favor, insira um email válido.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF (apenas números)</label>
+                <input type="text" class="form-control rounded" id="cpf" name="cpf" maxlength="14" required>
+                <div class="invalid-feedback">
+                    Por favor, insira um CPF válido com 11 dígitos numéricos.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="dob" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control rounded" id="dob" name="dob" required>
+                <div class="invalid-feedback">
+                    Por favor, insira a data de nascimento.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gênero</label>
+                <select class="form-select rounded" id="gender" name="gender" required>
+                    <option value="">Selecione...</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+                <div class="invalid-feedback">
+                    Por favor, selecione o gênero.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 rounded">Cadastrar Cliente</button>
+        </form>
+
+        <div id="formMessage" class="alert d-none" role="alert"></div>
+
+        <h2 class="mt-5 text-center">Clientes Cadastrados</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover rounded">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                        <th>Data de Nascimento</th>
+                        <th>Gênero</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza de que deseja remover este cliente?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger rounded" id="confirmDeleteBtn">Remover</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
